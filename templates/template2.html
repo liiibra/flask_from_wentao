@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>饼形图示例</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="myPieChart" width="40" height="40"></canvas>
+
+  <script>
+    // 在这里编写JavaScript代码来生成饼形图
+    var ctx = document.getElementById('myPieChart').getContext('2d');
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['标签1', '标签2', '标签3'],
+            datasets: [{
+                label: '数据集',
+                data: [80, 40, 30], // 对应标签的数据
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4 // 悬停时的偏移量
+            }]
+        },
+        options: {
+            // 添加自定义选项，比如标题等
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: '我的饼形图'
+                }
+            }
+        }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask DataTables Example</title>
+    <!-- 引入必要的 CSS 和 JavaScript 文件 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/Users/liuwentao/Documents/code/flask_from_wentao/jquery.dataTables.css"> -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+</head>
+<body>
+    <table id="myTable" width="60%">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>date</th>
+                <th>test_version</th>
+                <th>platform</th>
+                <th>pass_rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 这里使用 Flask 传递过来的数据来填充表格 -->
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.date }}</td>
+                    <td>{{ row.test_version }}</td>
+                    <td>{{ row.platform }}</td>
+                    <td><a href="{{ row.test_log_path }}">{{ row.pass_rate }}</a></td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        // 初始化 DataTables
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
+</body>
+</html>
